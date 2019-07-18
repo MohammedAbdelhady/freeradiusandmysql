@@ -1,0 +1,67 @@
+################### Merakibeat Configuration Example #########################
+
+############################# Merakibeat ######################################
+
+merakibeat:
+  # Defines how often an event is sent to the output
+  period: 720s
+  merakihost: http://api.meraki.com
+  merakikey: daa052bee4393b3354b2adcb75b48e13e4c48168
+  merakinewtorkids: ["N_610800699462184404"]
+  merakiorgid: "610800699462125186"
+  nwconnstat: 1
+  nwlatencystat: 1
+  devconnstat: 0
+  devlatencystat: 0
+  clconnstat: 0
+  cllatencystat: 0
+  # Meraki Scanning API config
+  scanEnable : 1
+  scanSecret : "Cilantro"
+  scanValidator : "207d07408c9ae80aca37aa94e96118c702ae32af"
+  #Camera API config
+  # List of "cameraserialid:zone_id"
+  videoPeriod: 120s
+  cameraZoneList: ["Q2GV-DGHE-SX5T:0"]
+#================================ General =====================================
+
+# The name of the shipper that publishes the network data. It can be used to group
+# all the transactions sent by a single shipper in the web interface.
+name: MerakiHealth
+
+# The tags of the shipper are included in their own field with each
+# transaction published.
+#tags: ["service-X", "web-tier"]
+
+# Optional fields that you can specify to add additional information to the
+# output.
+#fields:
+#  env: staging
+
+
+
+#================================ Outputs =====================================
+
+# Configure what output to use when sending the data collected by the beat.
+
+#-------------------------- Elasticsearch output ------------------------------
+output.elasticsearch:
+  # Array of hosts to connect to.
+  hosts: ["elasticsearch:9200"]
+
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  #username: "elastic"
+  #password: "changeme"
+
+#================================ Logging =====================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: error, warning, info, debug
+#logging.level: debug
+
+# At debug level, you can selectively enable logging only for some components.
+# To enable all selectors use ["*"]. Examples of other selectors are "beat",
+# "publish", "service".
+#logging.selectors: ["*"]
+
